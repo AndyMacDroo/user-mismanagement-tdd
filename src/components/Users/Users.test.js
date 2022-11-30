@@ -1,10 +1,19 @@
 import { render, waitFor } from '@testing-library/react';
-import App from './App';
+import Users from './Users';
 
 const tableHeadings = ["Id", "Name", "Username", "Email", "Address street", "Phone", "Website", "Company name"];
 
-describe('userMismanagement', () => {
 
+
+describe('userMismanagement', () => {
+    test("Expects users component to return a div", async () => {
+        const { getByText } = render(<Users />);
+        await waitFor(() => {
+            getByText(/Users/i)).toBeVisible()
+        })
+    });
+
+    /*
   test('renders user table', async () => {
     const { getByText } = render(<App />);
     await waitFor(() => {
@@ -22,5 +31,5 @@ describe('userMismanagement', () => {
     }
   );
 
-
+*/
 })
